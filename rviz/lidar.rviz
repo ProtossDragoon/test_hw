@@ -13,6 +13,9 @@ Panels:
         - /Range2
         - /Range3
         - /Range4
+        - /TF1
+        - /TF1/Frames1
+        - /Range5
       Splitter Ratio: 0.5
     Tree Height: 571
   - Class: rviz/Selection
@@ -101,15 +104,15 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         front:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_left_60:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_right_60:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -133,12 +136,12 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/Axes
-      Enabled: true
+      Enabled: false
       Length: 0.10000000149011612
       Name: Axes
       Radius: 0.009999999776482582
-      Reference Frame: base
-      Value: true
+      Reference Frame: lidar
+      Value: false
     - Alpha: 0.5
       Buffer Length: 1
       Class: rviz/Range
@@ -179,11 +182,70 @@ Visualization Manager:
       Topic: /test/scan_back
       Unreliable: false
       Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        back:
+          Value: false
+        front:
+          Value: false
+        front_left_60:
+          Value: false
+        front_right_60:
+          Value: true
+        left:
+          Value: false
+        lidar:
+          Value: false
+        right:
+          Value: false
+      Marker Scale: 0.30000001192092896
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        lidar:
+          back:
+            {}
+          front:
+            front_left_60:
+              {}
+            front_right_60:
+              {}
+          left:
+            {}
+          right:
+            {}
+      Update Interval: 0
+      Value: true
+    - Alpha: 0.5
+      Buffer Length: 1
+      Class: rviz/Range
+      Color: 255; 255; 255
+      Enabled: true
+      Name: Range
+      Queue Size: 100
+      Topic: /test/scan_front_left_60
+      Unreliable: false
+      Value: true
+    - Alpha: 0.5
+      Buffer Length: 1
+      Class: rviz/Range
+      Color: 255; 255; 255
+      Enabled: true
+      Name: Range
+      Queue Size: 100
+      Topic: /test/scan_front_right_60
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: lidar
     Frame Rate: 30
   Name: root
   Tools:
@@ -207,7 +269,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.0304522514343262
+      Distance: 3.2389657497406006
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -222,10 +284,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.9347962737083435
+      Pitch: 1.01979660987854
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.968585968017578
+      Yaw: 6.136775493621826
     Saved: ~
 Window Geometry:
   Displays:

@@ -2,17 +2,6 @@
 <robot name="xycar"
     xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <link name="base_link">
-    </link>
-
-    <link name="base"> <!-- 차체 -->
-    </link>
-    <joint name="base_link_to_base" type="fixed">
-        <parent link="base_link"/>
-        <child link="base"/>
-        <origin xyz="0 0.0 0.0" rpy="0.0 0.0 3.14"/>
-    </joint>
-
     <link name="lidar">
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -21,9 +10,11 @@
             </geometry>
         </visual>
     </link>
-    <joint name="base_to_lidar" type="fixed">
-        <parent link="base"/>
-        <child link="lidar"/>
+
+    <link name="back"/>
+    <joint name="lidar_to_back" type="fixed">
+        <parent link="lidar"/>
+        <child link="back"/>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </joint>
 
@@ -31,27 +22,34 @@
     <joint name="lidar_to_front" type="fixed">
         <parent link="lidar"/>
         <child link="front"/>
-        <origin xyz="0.1 0.0 0.0" rpy="0.0 0.0 0"/>
+        <origin xyz="-0.0 0.0 0.0" rpy="0.0 0.0 3.14"/>
     </joint>
 
-    <link name="back"/>
-    <joint name="lidar_to_back" type="fixed">
-        <parent link="lidar"/>
-        <child link="back"/>
-        <origin xyz="0.1 0.0 0.0" rpy="0.0 0.0 3.14"/>
-    </joint>
-
-    <link name="left"/>
-    <joint name="lidar_to_left" type="fixed">
-        <parent link="lidar"/>
-        <child link="left"/>
-        <origin xyz="0.0 -0.1 0.0" rpy="0.0 0.0 -1.57"/>
+    <link name="front_right_60"/>
+    <joint name="front_to_front_right_60" type="fixed">
+        <parent link="front"/>
+        <child link="front_right_60"/>
+        <origin xyz="-0.0 0.0 0.0" rpy="0.0 0.0 -1.04"/>
     </joint>
 
     <link name="right"/>
     <joint name="lidar_to_right" type="fixed">
         <parent link="lidar"/>
         <child link="right"/>
-        <origin xyz="0.0 0.1 0.0" rpy="0.0 0.0 +1.57"/>
+        <origin xyz="0.0 -0.0 0.0" rpy="0.0 0.0 -1.57"/>
+    </joint>
+
+    <link name="front_left_60"/>
+    <joint name="front_to_front_left_60" type="fixed">
+        <parent link="front"/>
+        <child link="front_left_60"/>
+        <origin xyz="-0.0 0.0 0.0" rpy="0.0 0.0 1.04"/>
+    </joint>
+
+    <link name="left"/>
+    <joint name="lidar_to_left" type="fixed">
+        <parent link="lidar"/>
+        <child link="left"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 +1.57"/>
     </joint>
 </robot>

@@ -1,11 +1,11 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# NOTE: 이 모듈은 곧 lidar_ 에 의해 리팩터링될 모듈이므로, 나중에는 사용하지 말 것.
+
 # 외장
 import time
 import math
-import sys
-print(sys.version)
 
 # 서드파티
 import rospy
@@ -23,6 +23,8 @@ def lidar_callback(data):
 
 rospy.Subscriber('scan', LaserScan, lidar_callback, queue_size=1)
 pub_front = rospy.Publisher('scan_front', Range, queue_size=1)
+pub_front_right_60 = rospy.Publisher('scan_front_right_60', Range, queue_size=1)
+pub_front_left_60 = rospy.Publisher('scan_front_left_60', Range, queue_size=1)
 pub_back = rospy.Publisher('scan_back', Range, queue_size=1)
 pub_left = rospy.Publisher('scan_left', Range, queue_size=1)
 pub_right = rospy.Publisher('scan_right', Range, queue_size=1)
@@ -30,7 +32,7 @@ pub_right = rospy.Publisher('scan_right', Range, queue_size=1)
 msg = Range()
 h = Header()
 
-fov = 30
+fov = 60
 
 msg.radiation_type = Range().ULTRASOUND
 msg.min_range = 0.05
@@ -85,11 +87,23 @@ while not rospy.is_shutdown():
     msg.range = get_fovavg(lidar_points, 90)
     pub_right.publish(msg)
 
+    h.frame_id = "front_right_60"
+    msg.header = h
+    msg.header.stamp = rospy.Time.now()
+    msg.range = get_fovavg(lidar_points, 300)
+    pub_front_right_60.publish(msg)
+
     h.frame_id = "front"
     msg.header = h
     msg.header.stamp = rospy.Time.now()
     msg.range = get_fovavg(lidar_points, 0)
     pub_front.publish(msg)
+
+    h.frame_id = "front_left_60"
+    msg.header = h
+    msg.header.stamp = rospy.Time.now()
+    msg.range = get_fovavg(lidar_points, 60)
+    pub_front_left_60.publish(msg)
 
     h.frame_id = "left"
     msg.header = h
@@ -97,10 +111,10 @@ while not rospy.is_shutdown():
     msg.range = get_fovavg(lidar_points, 270)
     pub_left.publish(msg)
 
-    h.frame_id = "back"
+    """h.frame_id = "back"
     msg.header = h
     msg.header.stamp = rospy.Time.now()
     msg.range = get_fovavg(lidar_points, 180)
-    pub_back.publish(msg)
+    pub_back.publish(msg)"""
 
-    time.sleep(0.5)
+    time.sleep(0.1)
