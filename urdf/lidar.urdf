@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot name="xycar"
+    xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <link name="base_link">
+    </link>
+
+    <link name="base"> <!-- 차체 -->
+    </link>
+    <joint name="base_link_to_base" type="fixed">
+        <parent link="base_link"/>
+        <child link="base"/>
+        <origin xyz="0 0.0 0.0" rpy="0.0 0.0 3.14"/>
+    </joint>
+
+    <link name="lidar">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.07"/> <!-- radius="0.1" (10cm) 는 라이다가 식별 가능한 최소거리임 -->
+            </geometry>
+        </visual>
+    </link>
+    <joint name="base_to_lidar" type="fixed">
+        <parent link="base"/>
+        <child link="lidar"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="front"/>
+    <joint name="lidar_to_front" type="fixed">
+        <parent link="lidar"/>
+        <child link="front"/>
+        <origin xyz="0.1 0.0 0.0" rpy="0.0 0.0 0"/>
+    </joint>
+
+    <link name="back"/>
+    <joint name="lidar_to_back" type="fixed">
+        <parent link="lidar"/>
+        <child link="back"/>
+        <origin xyz="0.1 0.0 0.0" rpy="0.0 0.0 3.14"/>
+    </joint>
+
+    <link name="left"/>
+    <joint name="lidar_to_left" type="fixed">
+        <parent link="lidar"/>
+        <child link="left"/>
+        <origin xyz="0.0 -0.1 0.0" rpy="0.0 0.0 -1.57"/>
+    </joint>
+
+    <link name="right"/>
+    <joint name="lidar_to_right" type="fixed">
+        <parent link="lidar"/>
+        <child link="right"/>
+        <origin xyz="0.0 0.1 0.0" rpy="0.0 0.0 +1.57"/>
+    </joint>
+</robot>
