@@ -8,6 +8,7 @@ from sensor_msgs.msg import Range
 
 
 class RangeHelper():
+
     def __init__(
         self
     ):
