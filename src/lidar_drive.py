@@ -8,7 +8,7 @@ import rospy, time
 from std_msgs.msg import Int32MultiArray
 from sensor_msgs.msg import Range
 
-# FIXME
+# FIXME: 이 ROS 패키지의 msg 디렉토리에 저장하지 않고 전역에 있는 xycar_motor 메시지를 가져올 것
 from test_hw.msg import xycar_motor
 
 # 메시지 객체

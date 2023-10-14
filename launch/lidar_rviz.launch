@@ -1,5 +1,5 @@
 <launch>
-    <!-- <group ns="test"> -->
+    <!-- <group ns="test"> --> <!-- NOTE: 다른 launch 파일에서 호출할 때 이름공간이 꼬일 수 있으므로 그룹을 주석처리함. -->
         <!-- 이 값은 lidar_noviewer.launch 파일로부터 가져왔습니다! -->
         <node name="xycar_lidar" pkg="xycar_lidar" type="xycar_ydlidar" output="screen" respawn="false">
             <param name="port" type="string" value="/dev/ttyLIDAR"/>
