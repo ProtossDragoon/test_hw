@@ -5,7 +5,6 @@
 import rospy, time
 
 # 서드파티
-from std_msgs.msg import Int32MultiArray
 from sensor_msgs.msg import Range
 
 # FIXME: 이 ROS 패키지의 msg 디렉토리에 저장하지 않고 전역에 있는 xycar_motor 메시지를 가져올 것
@@ -55,7 +54,6 @@ rospy.init_node('lidar_driver')
 rospy.Subscriber('scan_front', Range, callback_f, queue_size=1)
 rospy.Subscriber('scan_front_left_60', Range, callback_fl, queue_size=1)
 rospy.Subscriber('scan_front_right_60', Range, callback_fr, queue_size=1)
-rospy.Subscriber('xycar_ultrasonic', Int32MultiArray, callback_ultra, queue_size=1)
 pub = rospy.Publisher('xycar_motor', xycar_motor, queue_size=1)
 
 time.sleep(3) # 라이다 연결을 위한 대기
