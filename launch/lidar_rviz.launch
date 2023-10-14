@@ -1,5 +1,5 @@
 <launch>
-    <group ns="test">
+    <!-- <group ns="test"> -->
         <!-- 이 값은 lidar_noviewer.launch 파일로부터 가져왔습니다! -->
         <node name="xycar_lidar" pkg="xycar_lidar" type="xycar_ydlidar" output="screen" respawn="false">
             <param name="port" type="string" value="/dev/ttyLIDAR"/>
@@ -20,5 +20,5 @@
         <param name="robot_description" textfile="$(find test_hw)/urdf/lidar.urdf"/>
         <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
         <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find test_hw)/rviz/lidar.rviz"/>
-    </group>
+    <!-- </group> -->
 </launch>

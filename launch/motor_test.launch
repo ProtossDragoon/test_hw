@@ -1,7 +1,0 @@
-<launch>
-    <!-- motor node -->
-    <include file="$(find xycar_motor)/launch/xycar_motor.launch" />
-    
-    <!-- auto driver -->
-    <node name="motor_test" pkg="test_hw" type="motor_test.py" />
-</launch>

@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find test_hw)/launch/lidar_rviz.launch"/>
+    <include file="$(find xycar_motor)/launch/xycar_motor.launch"/>
+    <node name="lidar_drive" pkg="test_hw" type="lidar_drive.py" output="screen"/>
+</launch>
