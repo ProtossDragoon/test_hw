@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 
 # 외장
-import rospy, time
+import time
 
 # 서드파티
+import rospy
 from sensor_msgs.msg import Range
 
 # FIXME: 이 ROS 패키지의 msg 디렉토리에 저장하지 않고 전역에 있는 xycar_motor 메시지를 가져올 것
@@ -69,7 +70,7 @@ while not rospy.is_shutdown():
 
     if 조건_전방_가까움:
         if 조건_전방좌측_너무너무가까움:
-            print(f'좌측 너무 가까움!')
+            print('좌측 너무 가까움!')
             drive_go(speed=0, angle=-50)
             time.sleep(0.5)
             drive_go(speed=-5, angle=-50)
@@ -79,7 +80,7 @@ while not rospy.is_shutdown():
         else:
             print('차라리 우측으로 가자.')
         if 조건_전방우측_너무너무가까움:
-            print(f'우측 너무 가까움!')
+            print('우측 너무 가까움!')
             drive_go(speed=0, angle=50)
             time.sleep(0.5)
             drive_go(speed=-5, angle=50)
