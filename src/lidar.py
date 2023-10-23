@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# 외장
+# 빌트인
 import time
 import math
 import sys
